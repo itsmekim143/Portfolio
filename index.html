@@ -27,6 +27,8 @@
             overflow: hidden;
             background: var(--dark);
             color: white;
+            height: 100vh;
+            width: 100vw;
         }
 
         /* Background Video */
@@ -36,11 +38,9 @@
             left: 50%;
             min-width: 100%;
             min-height: 100%;
-            width: auto;
-            height: auto;
             transform: translate(-50%, -50%);
             z-index: 1;
-            filter: brightness(0.25); /* Darkened slightly for better text contrast */
+            filter: brightness(0.2);
             object-fit: cover;
         }
 
@@ -50,12 +50,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
             z-index: 2;
             pointer-events: none;
         }
 
-        /* Main Container */
+        /* Re-arranged Profile Container */
         .container {
             position: relative;
             z-index: 10;
@@ -66,38 +66,27 @@
             padding: 20px;
         }
 
-        .profile-container {
+        .profile-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            max-width: 600px;
-            width: 100%;
             animation: fadeInUp 1s ease-out;
         }
 
-        /* Text Overlay Section */
-        .text-overlay {
-            margin-bottom: 30px;
-        }
-
+        /* Name Animation */
         .profile-name {
             font-family: 'Righteous', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Responsive sizing */
+            font-size: clamp(2.8rem, 10vw, 4.5rem);
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            text-shadow: 
-                0 0 20px rgba(255, 0, 102, 0.8),
-                0 4px 10px rgba(0, 0, 0, 0.9);
-            gap: 2px;
+            text-shadow: 0 0 25px rgba(255, 0, 102, 0.9);
         }
 
-        .profile-name .letter {
+        .letter {
             display: inline-block;
-            color: white;
             animation: wave 2s ease-in-out infinite;
             animation-delay: calc(var(--i) * 0.1s);
         }
@@ -106,104 +95,89 @@
             font-size: 1.2rem;
             color: var(--primary);
             margin-bottom: 20px;
-            font-weight: 400;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         /* Location Badge */
-        .info-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-size: 0.95rem;
+        .location-badge {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .info-badge i {
-            color: var(--secondary);
-        }
-
-        /* Bottom Section / Links */
-        .bottom-section {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 25px;
+            gap: 8px;
+            margin-bottom: 30px;
         }
 
-        .social-links {
+        .location-badge i { color: var(--secondary); }
+
+        /* Socials */
+        .social-row {
             display: flex;
             gap: 15px;
+            margin-bottom: 30px;
         }
 
-        .social-link {
-            width: 50px;
-            height: 50px;
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
             color: white;
-            font-size: 1.2rem;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
-        .social-link:hover {
+        .social-btn:hover {
             transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(255, 0, 102, 0.4);
-            background: rgba(255, 0, 102, 0.2);
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
         }
 
-        /* Website Link */
-        .website-badge {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 12px 35px;
-            border-radius: 30px;
-            border: 2px solid var(--accent);
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--accent);
+        /* Website Button */
+        .site-link {
             text-decoration: none;
-            transition: all 0.3s ease;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            background: rgba(0,0,0,0.3);
         }
 
-        .website-badge:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 255, 0, 0.4);
+        .site-link:hover {
             background: var(--accent);
             color: black;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
         }
 
-        /* Volume UI */
-        .volume-control {
+        /* Mute Button */
+        .mute-btn {
             position: fixed;
-            top: 30px;
-            left: 30px;
+            top: 25px;
+            left: 25px;
             z-index: 100;
-            width: 45px;
-            height: 45px;
             background: var(--primary);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -211,74 +185,61 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-
-        @media (max-width: 480px) {
-            .profile-subtitle { font-size: 1rem; }
-            .info-badge { font-size: 0.8rem; }
-        }
     </style>
 </head>
 <body>
     <video id="bg-video" autoplay muted loop playsinline>
         <source src="https://res.cloudinary.com/dy5vraugm/video/upload/Furina_Montagem_Shirt_Blue_y7us35.mp4" type="video/mp4">
     </video>
-
     <div class="video-overlay"></div>
 
-    <div class="volume-control" id="volume-toggle">
+    <div class="mute-btn" id="mute-toggle">
         <i class="fas fa-volume-mute"></i>
     </div>
 
     <div class="container">
-        <div class="profile-container">
-            <div class="text-overlay">
-                <h1 class="profile-name" data-text="YourDevName"></h1>
-                <p class="profile-subtitle">uhhh, i do programming</p>
-                
-                <div class="info-badge">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Last seen at YourLocation</span>
-                </div>
+        <div class="profile-content">
+            <h1 class="profile-name" id="name-container">YourDevName</h1>
+            <p class="profile-subtitle">uhhh, i do programming</p>
+            
+            <div class="location-badge">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Last seen at YourLocation</span>
             </div>
 
-            <div class="bottom-section">
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                </div>
-
-                <a href="https://yourwebsite.carrd.co" class="website-badge">
-                    yourwebsite.carrd.co
-                </a>
+            <div class="social-row">
+                <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-btn"><i class="fas fa-envelope"></i></a>
             </div>
+
+            <a href="https://yourwebsite.carrd.co" class="site-link">yourwebsite.carrd.co</a>
         </div>
     </div>
 
     <script>
-        // Animate name letters
-        const nameElement = document.querySelector('.profile-name');
-        const text = nameElement.getAttribute('data-text');
-        
-        text.split('').forEach((char, index) => {
+        // Character-by-character animation
+        const nameNode = document.getElementById('name-container');
+        const nameText = nameNode.textContent;
+        nameNode.innerHTML = '';
+        nameText.split('').forEach((l, i) => {
             const span = document.createElement('span');
+            span.textContent = l;
             span.classList.add('letter');
-            span.textContent = char === ' ' ? '\u00A0' : char;
-            span.style.setProperty('--i', index);
-            nameElement.appendChild(span);
+            span.style.setProperty('--i', i);
+            nameNode.appendChild(span);
         });
 
-        // Volume Toggle Logic
-        const volumeToggle = document.getElementById('volume-toggle');
-        const bgVideo = document.getElementById('bg-video');
-        const volumeIcon = volumeToggle.querySelector('i');
-
-        volumeToggle.addEventListener('click', () => {
-            bgVideo.muted = !bgVideo.muted;
-            volumeIcon.className = bgVideo.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+        // Audio Toggle
+        const btn = document.getElementById('mute-toggle');
+        const video = document.getElementById('bg-video');
+        btn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            btn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
         });
     </script>
 </body>
+</html>
 </html>
