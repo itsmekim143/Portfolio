@@ -250,41 +250,6 @@
             transform: scale(1.1) rotate(5deg);
         }
 
-        /* Audio Controls */
-        .audio-control {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            width: 60px;
-            height: 60px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: fadeIn 1s ease-out 1.3s both;
-        }
-
-        .audio-control:hover {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
-        }
-
-        .audio-control i {
-            color: var(--primary);
-            font-size: 1.3rem;
-        }
-
-        .audio-control.playing i {
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
         /* Corner Accents */
         .corner-accent {
             position: fixed;
@@ -394,9 +359,9 @@
 </head>
 <body>
     <!-- Background Video -->
-    <video id="bg-video" autoplay muted loop playsinline>
+    <video id="bg-video" autoplay loop playsinline>
         <!-- Replace these with your own video files -->
-        <source src="https://streamable.com/xl6e7p" type="video/mp4">
+        <source src="https://cdn.coverr.co/videos/coverr-night-city-traffic-7284/1080p.mp4" type="video/mp4">
     </video>
 
     <div class="video-overlay"></div>
@@ -411,7 +376,7 @@
         <div class="profile-card">
             <div class="profile-image-wrapper">
                 <!-- Replace with your profile image -->
-                <img src="https://ibb.co/ymnrtzPQ" alt="Profile Picture" class="profile-image">
+                <img src="https://i.pravatar.cc/300?img=33" alt="Profile Picture" class="profile-image">
             </div>
 
             <h1 class="profile-name" data-text="Your Name"></h1>
@@ -442,17 +407,6 @@
         </div>
     </div>
 
-    <!-- Audio Control -->
-    <div class="audio-control" id="audio-toggle">
-        <i class="fas fa-volume-up"></i>
-    </div>
-
-    <!-- Background Music -->
-    <audio id="bg-audio" loop>
-        <!-- Replace with your music file -->
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_d1718ab41b.mp3" type="audio/mp3">
-    </audio>
-
     <script>
         // Animate letters
         const nameElement = document.querySelector('.profile-name');
@@ -466,39 +420,6 @@
             span.style.setProperty('--i', index);
             nameElement.appendChild(span);
         });
-
-        // Audio Control
-        const audioToggle = document.getElementById('audio-toggle');
-        const bgAudio = document.getElementById('bg-audio');
-        const audioIcon = audioToggle.querySelector('i');
-        let isPlaying = false;
-
-        audioToggle.addEventListener('click', () => {
-            if (isPlaying) {
-                bgAudio.pause();
-                audioIcon.classList.remove('fa-volume-up');
-                audioIcon.classList.add('fa-volume-mute');
-                audioToggle.classList.remove('playing');
-            } else {
-                bgAudio.play();
-                audioIcon.classList.remove('fa-volume-mute');
-                audioIcon.classList.add('fa-volume-up');
-                audioToggle.classList.add('playing');
-            }
-            isPlaying = !isPlaying;
-        });
-
-        // Auto-play music after user interaction
-        document.addEventListener('click', () => {
-            if (!isPlaying && bgAudio.paused) {
-                bgAudio.play().then(() => {
-                    isPlaying = true;
-                    audioToggle.classList.add('playing');
-                }).catch(() => {
-                    // Auto-play blocked, user needs to click the button
-                });
-            }
-        }, { once: true });
     </script>
 </body>
 </html>
