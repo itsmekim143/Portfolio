@@ -98,7 +98,7 @@
         /* Profile Badge/Picture (small circle on character) */
         .profile-badge {
             position: absolute;
-            top: 20%;
+            top: 10%;
             left: 50%;
             transform: translateX(-50%);
             width: 90px;
@@ -118,16 +118,15 @@
             object-fit: cover;
         }
 
-        /* Text Overlay Container */
+        /* Text Overlay Container - MOVED BELOW CHARACTER */
         .text-overlay {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
             text-align: center;
-            width: 95%;
+            width: 100%;
             pointer-events: none;
             z-index: 10;
+            margin-top: -20px;
+            margin-bottom: 20px;
         }
 
         /* Name */
@@ -181,7 +180,7 @@
             padding: 10px 25px;
             border-radius: 25px;
             font-size: 0.95rem;
-            margin-bottom: 20px;
+            margin-bottom: 0;
             border: 2px solid rgba(255, 255, 255, 0.3);
             animation: fadeIn 1s ease-out 0.7s both;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -199,6 +198,7 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
+            pointer-events: all;
         }
 
         /* Social Links */
@@ -268,6 +268,7 @@
             animation: fadeIn 1s ease-out 1.1s both;
             cursor: pointer;
             transition: all 0.3s ease;
+            pointer-events: all;
         }
 
         .website-badge:hover {
@@ -358,10 +359,10 @@
 
         @keyframes pulse {
             0%, 100% {
-                transform: scale(1);
+                transform: translateX(-50%) scale(1);
             }
             50% {
-                transform: scale(1.05);
+                transform: translateX(-50%) scale(1.05);
             }
         }
 
@@ -377,19 +378,18 @@
 
             .character-image {
                 max-width: 350px;
-                margin-bottom: 25px;
+                margin-bottom: 20px;
             }
 
             .profile-badge {
                 width: 75px;
                 height: 75px;
-                top: 18%;
+                top: 8%;
                 border-width: 3px;
             }
 
             .text-overlay {
-                top: 58%;
-                width: 98%;
+                margin-top: -15px;
             }
 
             .profile-subtitle {
@@ -437,17 +437,18 @@
 
             .character-image {
                 max-width: 280px;
+                margin-bottom: 15px;
             }
 
             .profile-badge {
                 width: 65px;
                 height: 65px;
-                top: 16%;
+                top: 7%;
                 border-width: 3px;
             }
 
             .text-overlay {
-                top: 60%;
+                margin-top: -10px;
             }
 
             .profile-subtitle {
@@ -492,6 +493,10 @@
             .volume-control i {
                 font-size: 1rem;
             }
+
+            .bottom-section {
+                gap: 15px;
+            }
         }
 
         @media (max-width: 375px) {
@@ -529,7 +534,7 @@
 
             .character-image {
                 max-width: 220px;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
             }
 
             .profile-name {
@@ -541,7 +546,8 @@
             }
 
             .text-overlay {
-                top: 60%;
+                margin-top: -10px;
+                margin-bottom: 10px;
             }
 
             .bottom-section {
@@ -574,21 +580,21 @@
             <!-- Character Image -->
             <div class="character-image">
                 <!-- Replace with your character/avatar image -->
-                <img src="https://i.imgur.com/placeholder.png" alt="Character" id="character-img">
+                <img src="https://via.placeholder.com/500x700/1a1a2e/ffffff?text=Your+Character+Image" alt="Character" id="character-img">
                 
                 <!-- Small profile badge on character -->
                 <div class="profile-badge">
                     <img src="https://i.pravatar.cc/150?img=33" alt="Profile">
                 </div>
+            </div>
 
-                <!-- Text Overlay on Character -->
-                <div class="text-overlay">
-                    <h1 class="profile-name" data-text="YourDevName"></h1>
-                    <p class="profile-subtitle">uhhh, i do programming</p>
-                    <div class="info-badge">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Last seen at YourLocation</span>
-                    </div>
+            <!-- Text Overlay - NOW BELOW CHARACTER -->
+            <div class="text-overlay">
+                <h1 class="profile-name" data-text="YourDevName"></h1>
+                <p class="profile-subtitle">uhhh, i do programming</p>
+                <div class="info-badge">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Last seen at YourLocation</span>
                 </div>
             </div>
 
@@ -661,13 +667,7 @@
         bgVideo.play().catch(err => {
             console.log('Video autoplay blocked:', err);
         });
-
-        // Placeholder for character image - replace with your actual image
-        const characterImg = document.getElementById('character-img');
-        // For demo purposes - replace this with your actual character image URL
-        characterImg.src = 'https://via.placeholder.com/500x700/1a1a2e/ffffff?text=Your+Character+Image';
     </script>
 </body>
 </html>
-</body>
-</html>
+
